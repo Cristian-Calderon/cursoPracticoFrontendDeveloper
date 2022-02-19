@@ -1,2 +1,2 @@
 # cursoPracticoFrontendDeveloper
-Curso practico para recordar lo avanzado.
+Curso practico de Html y CSS para recordar lo avanzado.
