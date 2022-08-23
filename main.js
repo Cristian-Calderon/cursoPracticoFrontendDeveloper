@@ -7,7 +7,7 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const productDetailCloseIcon = document.querySelector('.product-detail-close')
 
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const shoppingcartcontainer = document.querySelector('#shoppingCartContainer');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 
 // lista de productos
 const cardsContainer = document.querySelector('.cards-container');
@@ -31,11 +31,13 @@ function toggleDesktopMenu (){
 }
 
 function toggleMobileMenu (){
-    const isAsideClosed = shoppingcartcontainer.classList.contains('inactive');
+    const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
 
     if(!isAsideClosed){
-        shoppingcartcontainer.classList.add('inactive');
+        shoppingCartContainer.classList.add('inactive');
     }
+
+    closeProductDetailAside();
 
     mobileMenu.classList.toggle('inactive');
 }
@@ -47,10 +49,21 @@ function toggleCarritoAside (){
         mobileMenu.classList.add('inactive');
     }
 
-    shoppingcartcontainer.classList.toggle('inactive');
+    const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
+    
+    if(!isProductDetailClosed){
+        productDetailContainer.classList.add('inactive');
+    }
+
+
+    shoppingCartContainer.classList.toggle('inactive');
 }
 
 function openProductDetailAside (){
+    //Siempre que se vea el product detail se tiene que cerrar el shoppingCartContainer 
+
+    shoppingCartContainer.classList.add('inactive');
+
     productDetailContainer.classList.remove('inactive');
 }
 
@@ -81,23 +94,7 @@ productList.push({
     image: 'https://images.pexels.com/photos/3693732/pexels-photo-3693732.jpeg'
 });
 
-productList.push({
-    name: 'Bike',
-    price: 120,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?cs=srgb&dl=pexels-pixabay-276517.jpg&fm=jpg'
-});
 
-productList.push({
-    name: 'Monitor',
-    price: 220,
-    image: 'https://images.pexels.com/photos/2585916/pexels-photo-2585916.jpeg'
-});
-
-productList.push({
-    name: 'Portatil',
-    price: 620,
-    image: 'https://images.pexels.com/photos/3693732/pexels-photo-3693732.jpeg'
-});
 
 function renderProducts(arr){
 
